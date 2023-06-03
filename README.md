@@ -1,2 +1,2 @@
 # JavaPong
-shitty pong written in java
+atari pong clone written in Java
