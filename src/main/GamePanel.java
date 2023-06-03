@@ -27,8 +27,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
     private int aiPadY = GAME_HEIGHT / 2;
     private double aiPadVelocity = 1;
     //the AI predicts where the ball will hit next
-    private double predictedBallY = (double)GAME_HEIGHT / 2;
-    private double aiPadDirection = (double)GAME_HEIGHT/2;
+    private double predictedBallY = (double) GAME_HEIGHT / 2;
+    private double aiPadDirection = (double) GAME_HEIGHT / 2;
     //pad dimensions
     private final int PAD_HEIGHT = 20;
     private final int PAD_WIDTH = 2;
@@ -100,8 +100,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         playerPadY = GAME_HEIGHT / 2;
         ballVelocity = 2;
         ballAngle = PI;
+        aiPadDirection = (double) GAME_HEIGHT / 2;
 
-        predictedBallY = (double)GAME_HEIGHT / 2;
+        predictedBallY = (double) GAME_HEIGHT / 2;
 
         aiPadY = GAME_HEIGHT / 2;
         aiPadVelocity = 1;
@@ -194,7 +195,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
                     ballVelocity = ballVelocity + 0.03 * ballVelocity;
 
                 //once the ball is reflected AI returns to the center of the board
-                aiPadDirection = (double)GAME_HEIGHT / 2;
+                aiPadDirection = (double) GAME_HEIGHT / 2;
             }
         }
 
@@ -212,7 +213,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         }
         Random random = new Random();
 
-        aiPadDirection = predictedBallY + random.nextDouble(-(double)PAD_HEIGHT / 2, (double)PAD_HEIGHT / 2);
+        aiPadDirection = predictedBallY + random.nextDouble(-(double) PAD_HEIGHT / 2, (double) PAD_HEIGHT / 2);
     }
 
     private void render() {
@@ -245,7 +246,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
         //predicted ball location
         g.setColor(Color.RED);
-        g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH*PIXEL_MULTIPLIER - PAD_WIDTH*PIXEL_MULTIPLIER - PAD_OFFSET*PIXEL_MULTIPLIER - BALL_DIAMETER*PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
+        g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH * PIXEL_MULTIPLIER - PAD_WIDTH * PIXEL_MULTIPLIER - PAD_OFFSET * PIXEL_MULTIPLIER - BALL_DIAMETER * PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
 
         //ball
         g.setColor(Color.white);
