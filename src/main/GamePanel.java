@@ -108,6 +108,10 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         aiPadVelocity = 1;
         ballX = (double) GAME_WIDTH / 2;
         ballY = (double) GAME_HEIGHT / 2;
+        if(playerScore == 11 || aiScore == 11) {
+            playerScore = 0;
+            aiScore = 0;
+        }
     }
 
     private void tick() {
@@ -158,12 +162,12 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         }
 
         if (ballX + (double) BALL_DIAMETER / 2 >= GAME_WIDTH) { //right wall collision
-            newGame();
             playerScore++;
+            newGame();
         }
         if (ballX - (double) BALL_DIAMETER / 2 <= 0) { //left wall collision
-            newGame();
             aiScore++;
+            newGame();
         }
 
         if (ballX - (double) BALL_DIAMETER / 2 <= ((double) PAD_WIDTH) + PAD_OFFSET) { //left pad collision
