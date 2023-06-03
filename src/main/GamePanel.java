@@ -112,8 +112,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
     private void tick() {
         movePads();
-        int precision = (int) floor(ballVelocity); //used to increase precision with collision detections
-        for (int i = 0; i < precision; i++) {
+        double precision = floor(ballVelocity); //used to increase precision with collision detections
+        for (int i = 0; i < (int) precision; i++) {
             ballX += ballVelocity / precision * cos(ballAngle);
             ballY -= ballVelocity / precision * sin(ballAngle);
             checkCollision();
