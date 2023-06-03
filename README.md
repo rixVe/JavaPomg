@@ -1,2 +1,2 @@
 # JavaPong
-atari pong clone written in Java
+atari pong game written in Java
