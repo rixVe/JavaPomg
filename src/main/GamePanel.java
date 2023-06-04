@@ -171,7 +171,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         }
 
         if (ballX - (double) BALL_DIAMETER / 2 <= ((double) PAD_WIDTH) + PAD_OFFSET) { //left pad collision
-            if (ballY + (double) BALL_DIAMETER / 2 > playerPadY - (double) PAD_HEIGHT / 2 && ballY - (double) BALL_DIAMETER / 2 < playerPadY + (double) PAD_HEIGHT / 2) { //the Y value is in between the pad Y top and bottom
+            if (ballY + (double) BALL_DIAMETER / 2 >= playerPadY - (double) PAD_HEIGHT / 2 && ballY - (double) BALL_DIAMETER / 2 <= playerPadY + (double) PAD_HEIGHT / 2) { //the Y value is in between the pad Y top and bottom
                 //calculating the reflection angle
                 double percent = (ballY - playerPadY) / ((double) PAD_HEIGHT / 2); //the further from the middle of paddle the larger the angle
                 if (percent > 1) percent = 1;
@@ -186,7 +186,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         }
 
         if (ballX + (double) BALL_DIAMETER / 2 >= GAME_WIDTH - (double) PAD_WIDTH - PAD_OFFSET) { //right pad collision
-            if (ballY + (double) BALL_DIAMETER / 2 > aiPadY - (double) PAD_HEIGHT / 2 && ballY - (double) BALL_DIAMETER / 2 < aiPadY + (double) PAD_HEIGHT / 2) {  //the Y value is in between the pad Y top and bottom
+            if (ballY + (double) BALL_DIAMETER / 2 >= aiPadY - (double) PAD_HEIGHT / 2 && ballY - (double) BALL_DIAMETER / 2 <= aiPadY + (double) PAD_HEIGHT / 2) {  //the Y value is in between the pad Y top and bottom
                 //calculating the reflection angle
                 double percent = (ballY - aiPadY) / ((double) PAD_HEIGHT / 2); //the further from the middle of paddle the larger the angle
                 if (percent > 1) percent = 1;
