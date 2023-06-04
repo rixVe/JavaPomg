@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
     //velocity and angle (counterclockwise from y=0) of the ball
     private double ballVelocity = 2;
-    private final double ballMaxVelocity = 8;
+    private final double ballMaxVelocity = 10;
     private double ballAngle = PI;
     //position of ball
     private double ballX = (double) GAME_WIDTH / 2;
@@ -217,7 +217,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         }
         Random random = new Random();
 
-        aiPadDirection = predictedBallY + random.nextDouble(-(double) PAD_HEIGHT / 2, (double) PAD_HEIGHT / 2);
+        aiPadDirection = predictedBallY + (0.5-random.nextDouble())*((double) PAD_HEIGHT);
     }
 
     private void render() {
@@ -249,8 +249,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
 
         //predicted ball location
-        g.setColor(Color.RED);
-        g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH * PIXEL_MULTIPLIER - PAD_WIDTH * PIXEL_MULTIPLIER - PAD_OFFSET * PIXEL_MULTIPLIER - BALL_DIAMETER * PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
+        //g.setColor(Color.RED);
+        //g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH * PIXEL_MULTIPLIER - PAD_WIDTH * PIXEL_MULTIPLIER - PAD_OFFSET * PIXEL_MULTIPLIER - BALL_DIAMETER * PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
 
         //ball
         g.setColor(Color.white);
@@ -278,32 +278,32 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_DOWN -> {
+            case KeyEvent.VK_DOWN : {
                 input = Input.DOWN;
                 keyDownPressed = true;
-            }
-            case KeyEvent.VK_UP -> {
+            } break;
+            case KeyEvent.VK_UP : {
                 input = Input.UP;
                 keyUpPressed = true;
-            }
+            } break;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_DOWN -> {
+            case KeyEvent.VK_DOWN : {
                 keyDownPressed = false;
                 if (keyUpPressed) {
                     input = Input.UP;
                 }
-            }
-            case KeyEvent.VK_UP -> {
+            }break;
+            case KeyEvent.VK_UP : {
                 keyUpPressed = false;
                 if (keyDownPressed) {
                     input = Input.DOWN;
                 }
-            }
+            }break;
         }
 
         if (!keyDownPressed && !keyUpPressed) {
