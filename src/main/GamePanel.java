@@ -79,14 +79,14 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
     public void run() {
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
+        double ns = 1000000000 / amountOfTicks; // nanoseconds per tick
         double delta = 0;
         newGame();
         while (true) { //main game loop
             requestFocus(true); //key listening problems solved
 
             long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
+            delta += (now - lastTime) / ns; // how many ticks should have happened over the time that has passed
             lastTime = now;
             while (delta >= 1) {
                 tick();
@@ -249,8 +249,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
 
         //predicted ball location
-        g.setColor(Color.RED);
-        g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH * PIXEL_MULTIPLIER - PAD_WIDTH * PIXEL_MULTIPLIER - PAD_OFFSET * PIXEL_MULTIPLIER - BALL_DIAMETER * PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
+        //g.setColor(Color.RED);
+        //g.fillRect((int) ((double) BOARDER_X_PX + GAME_WIDTH * PIXEL_MULTIPLIER - PAD_WIDTH * PIXEL_MULTIPLIER - PAD_OFFSET * PIXEL_MULTIPLIER - BALL_DIAMETER * PIXEL_MULTIPLIER), (int) ((double) BOARDER_Y_PX + (double) PIXEL_MULTIPLIER * (predictedBallY - (double) BALL_DIAMETER / 2)), PIXEL_MULTIPLIER * BALL_DIAMETER, PIXEL_MULTIPLIER * BALL_DIAMETER);
 
         //ball
         g.setColor(Color.white);
